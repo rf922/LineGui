@@ -1,5 +1,5 @@
 /*
- * 
+ * File : LinePlotView.java
  * 
  * 
  */
@@ -25,8 +25,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 /**
  *
@@ -34,21 +32,16 @@ import javafx.stage.Stage;
  */
 public class LinePlotView {
 
-    private Stage mainStage;
-    private Pane pane;       // Pane to hold graphical elements
+    private final Pane pane;       // Pane to hold graphical elements
     private Circle startPoint, endPoint; // Start and end points for the line
     private Line line;           // Line connecting the two points
     private Button distanceButton, midpointButton, vertHorzButton, slopeButton;
     private final DateTimeFormatter form = DateTimeFormatter.ofPattern("EEE, d MMM yyyy hh:mm a", Locale.US);
-
     private BorderPane borderPane;
-
     private Text distanceText, midpointText, vertHorxText, timeText, slopeText;
-
     private static final int CIRCLE_RADIUS = 5;
 
-    public LinePlotView(Stage mainStage) {
-        this.mainStage = mainStage;
+    public LinePlotView() {
         this.pane = new Pane();
     }
 

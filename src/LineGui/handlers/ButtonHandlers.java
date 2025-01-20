@@ -1,14 +1,14 @@
 /*
- * 
+ * File : ButtonHandlers.java
  * 
  * 
  */
 package LineGui.handlers;
 
-import LineGui.LineInfoDisplayer;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import LineGui.util.LineInfoUtil;
 
 /**
  *
@@ -25,7 +25,7 @@ public class ButtonHandlers {
      */
     public static void handleDistanceButtonClick(Line line, Circle startPoint, Circle endPoint, Text distanceText) {
         if (startPoint != null && endPoint != null) {
-            LineInfoDisplayer lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.DISTANCE);
+            LineInfoUtil lineInfoDisplayer = LineInfoUtil.createLineInfoDisplayer(LineInfoUtil.InfoType.DISTANCE);
             distanceText.setText(lineInfoDisplayer.getInfo(line));
         } else if (startPoint != null) {
             distanceText.setText("Please select an EndPoint");
@@ -43,7 +43,7 @@ public class ButtonHandlers {
      */
     public static void handleMidPointButtonClick(Line line, Circle startPoint, Circle endPoint, Text midpointText) {
         if (startPoint != null && endPoint != null) {
-            LineInfoDisplayer lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.MIDPOINT);
+            LineInfoUtil lineInfoDisplayer = LineInfoUtil.createLineInfoDisplayer(LineInfoUtil.InfoType.MIDPOINT);
             midpointText.setText(lineInfoDisplayer.getInfo(line));
         } else if (startPoint != null) {
             midpointText.setText("Please select an EndPoint");
@@ -61,7 +61,7 @@ public class ButtonHandlers {
      */
     public static void handleVertHorzButtonClick(Line line, Circle startPoint, Circle endPoint, Text vertHorxText) {
         if (startPoint != null && endPoint != null) {
-            LineInfoDisplayer lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.VERTHORZ);
+            LineInfoUtil lineInfoDisplayer = LineInfoUtil.createLineInfoDisplayer(LineInfoUtil.InfoType.VERTHORZ);
             vertHorxText.setText(lineInfoDisplayer.getInfo(line));
         } else if (startPoint != null) {
             vertHorxText.setText("Please Select an EndPoint");
@@ -79,7 +79,7 @@ public class ButtonHandlers {
      */
     public static void handleSlopeButtonClick(Line line, Circle startPoint, Circle endPoint, Text slopeText) {
         if (startPoint != null && endPoint != null) {
-            LineInfoDisplayer lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.SLOPE);
+            LineInfoUtil lineInfoDisplayer = LineInfoUtil.createLineInfoDisplayer(LineInfoUtil.InfoType.SLOPE);
             slopeText.setText(lineInfoDisplayer.getInfo(line));
         } else if (startPoint != null) {
             slopeText.setText("Please Select an EndPoint");

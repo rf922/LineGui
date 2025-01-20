@@ -1,7 +1,7 @@
 /**
  * File : LineInfoDisplayer.java
  */
-package LineGui;
+package LineGui.util;
 
 
 
@@ -16,7 +16,7 @@ import javafx.scene.shape.Line;
 
 
 @FunctionalInterface
-public interface LineInfoDisplayer {
+public interface LineInfoUtil {
 
     String getInfo(Line line);
 
@@ -27,10 +27,10 @@ public interface LineInfoDisplayer {
     /**
      * Takes an enum type that determine the information getInfo will return
      * @param type
-     * @return LineInfoDisplayer
+     * @return LineInfoUtil
      */
-    public static LineInfoDisplayer createLineInfoDisplayer(InfoType type) {
-        LineInfoDisplayer display = switch(type){
+    public static LineInfoUtil createLineInfoDisplayer(InfoType type) {
+        LineInfoUtil display = switch(type){
             case DISTANCE -> (Line) -> { 
                 BiFunction<Double, Double, Double> distanceFormula = (x1, x2) -> {
                     Double distance = Math.sqrt(Math.pow(x1, 2) + Math.pow(x2, 2));
