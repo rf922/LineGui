@@ -4,11 +4,11 @@
 */
 
 .folder-icon{
-    -fx-graphic: url("icon.png");
+    -fx-graphic: url("/resources/images/icon.png");
 }
 
 .root{
-    -fx-background-image: url("space.jpg");
+    -fx-background-image: url("/resources/images/space.jpg");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;    
 }

@@ -127,7 +127,7 @@ public class LineInfoGUI extends Application {
         Scene scene = new Scene(borderPane, 500, 500, Color.FLORALWHITE);
         scene.getStylesheets().add(this.getClass().getResource("LineGuiStyle.css").toExternalForm());
         primaryStage.setTitle("Rafael's Line Information");
-        primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("icon.png")));
+        primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/resources/images/icon.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
