@@ -20,3 +20,16 @@
 .button:hover {
     -fx-background-color: linear-gradient(#b16192, #61a2b1);
 }
+
+.pane {
+    -fx-font: 20px constantia;
+    -fx-stroke-width: 2;    
+}
+
+.control-box {
+    -fx-font: 10px constantia;
+    -fx-stroke: black;
+    -fx-background-color: linear-gradient(from 10% 0% to 100% 200%, repeat, magenta 10%, cyan 50%);
+    -fx-stroke-width: 2;
+}
+

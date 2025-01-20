@@ -3,9 +3,18 @@
  */
 package LineGui;
 
+
+
+
+
 import java.math.BigDecimal;
 import java.util.function.BiFunction;
 import javafx.scene.shape.Line;
+
+
+
+
+
 @FunctionalInterface
 public interface LineInfoDisplayer {
 
