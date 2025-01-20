@@ -33,3 +33,84 @@
     -fx-stroke-width: 2;
 }
 
+/** 
+*    Created on : Apr 13, 2020, 10:25:43 PM
+*    Author     : Rf922
+*/
+
+.folder-icon {
+    -fx-graphic: url("/resources/images/icon.png");
+}
+
+.root {
+    -fx-background-image: url("/resources/images/space.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;    
+}
+
+.button {
+    -fx-background-color: linear-gradient(#9c61b1, #b16192);   
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#b16192, #61a2b1);
+}
+
+.pane {
+    -fx-font: 20px constantia;
+    -fx-stroke-width: 2;    
+}
+
+.control-box {
+    -fx-font: 10px constantia;
+    -fx-stroke: black;
+    -fx-background-color: linear-gradient(from 10% 0% to 100% 200%, repeat, magenta 10%, cyan 50%);
+    -fx-stroke-width: 2;
+}
+
+.tab-pane {
+    -fx-background-color: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: linear-gradient(to bottom, silver, cyan);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
+.tab {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+    -fx-background-color: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px 5px 0 0;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+.tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #61a2b1, #9c61b1);
+    -fx-text-fill: white;
+    -fx-border-color: #61a2b1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+
+.tab:hover {
+    -fx-background-color: linear-gradient(to bottom, #ddd, #bbb);
+    -fx-text-fill: #333;
+}
+
+.tab:disabled {
+    -fx-opacity: 0.5;
+    -fx-background-color: #ccc;
+    -fx-text-fill: #666;
+}
+

@@ -19,8 +19,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.paint.*;
 import javafx.stage.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 /**
  *
@@ -49,6 +47,7 @@ public class LineInfoGUI extends Application {
 
         // Create TabPane to hold the tabs
         TabPane tabPane = new TabPane();
+        tabPane.getStyleClass().add("tab-pane");
         tabPane.getTabs().addAll(linePlotTab, moreToComeTab);
         
         // Set the first tab as selected
