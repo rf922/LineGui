@@ -20,6 +20,11 @@ import javafx.scene.shape.Polyline;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 /**
  * A JavaFX view for visualizing gradient descent on linear, quadratic, and
@@ -31,7 +36,9 @@ public class GradientDescentView {
     private final List<Point> points = new ArrayList<>(); // List of points added by the user
     private final String POINT_COLOR = "#c0c0c0";
     private final List<LearningModel> models;
-        
+    
+    
+    private Button resetButton;
     
     public GradientDescentView() {
         this.pane = new Pane();
@@ -43,7 +50,23 @@ public class GradientDescentView {
     }
 
     public Pane build() {
+        BorderPane borderPane = new BorderPane();
+
         pane.setOnMouseClicked(this::handleMouseClicks); // Handle mouse clicks
+                
+        resetButton = new Button("Reset Points");
+        resetButton.setOnMouseClicked(e -> {
+            points.clear();
+            pane.getChildren().clear();
+        });
+        
+        TilePane buttonPane = new TilePane(resetButton);
+        
+        VBox controlBox = new VBox(buttonPane);
+        controlBox.getStyleClass().add("control-box");
+        controlBox.setAlignment(Pos.CENTER_LEFT);
+        
+        
 
         // Animation loop for rendering and updating models
         new AnimationTimer() {
@@ -53,8 +76,9 @@ public class GradientDescentView {
                 render();
             }
         }.start();
-
-        return pane;
+        borderPane.setCenter(pane);
+        borderPane.setBottom(controlBox);
+        return borderPane;
     }
 
     /**
