@@ -9,6 +9,7 @@ package LineGui;
  * slope of the line.
  *
  */
+import LineGui.handlers.ButtonHandlers;
 import javafx.application.*;
 
 import javafx.geometry.*;
@@ -60,52 +61,22 @@ public class LineInfoGUI extends Application {
         borderPane.setCenter(pane);
         distanceText = new Text("");
         distanceButton = new Button("Calculate Distance");
-        distanceButton.setOnMouseClicked((event) -> {
-            if (startPoint != null && endPoint != null) {
-                this.lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.DISTANCE);
-                this.distanceText.setText(this.lineInfoDisplayer.getInfo(line));
-            } else if (startPoint != null) {
-                this.distanceText.setText("Please select an EndPoint");
-            } else {
-                this.distanceText.setText("Please pick a start and end point");
-            }
+        distanceButton.setOnMouseClicked((event) -> { ButtonHandlers.handleDistanceButtonClick(line, startPoint, endPoint, distanceText);
         });
         midpointText = new Text("");
         midpointButton = new Button("Calculate Midpoint");
         midpointButton.setOnMousePressed((event) -> {
-            if (startPoint != null && endPoint != null) {
-                this.lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.MIDPOINT);
-                this.midpointText.setText(this.lineInfoDisplayer.getInfo(line));
-            } else if (startPoint != null) {
-                this.midpointText.setText("Please select an EndPoint");
-            } else {
-                this.midpointText.setText("Please pick a start and end point");
-            }
+            ButtonHandlers.handleMidPointButtonClick(line, startPoint, endPoint, midpointText);
         });
         vertHorxText = new Text("");
         vertHorzButton = new Button("Determine Vertical/Horizontal");
         vertHorzButton.setOnMouseClicked((event) -> {
-            if (startPoint != null && endPoint != null) {
-                this.lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.VERTHORZ);
-                this.vertHorxText.setText(this.lineInfoDisplayer.getInfo(line));
-            } else if (startPoint != null) {
-                this.vertHorxText.setText("Please Select an EndPoint");
-            } else {
-                this.vertHorxText.setText("Please pick a start and end point");
-            }
-            
+            ButtonHandlers.handleVertHorzButtonClick(line, startPoint, endPoint, vertHorxText);
         });
         slopeText = new Text("");
         slopeButton = new Button("Approximate Slope");
         slopeButton.setOnMouseClicked((event) -> {
-            if (startPoint != null && endPoint != null) {
-                this.lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.SLOPE);
-                this.slopeText.setText(this.lineInfoDisplayer.getInfo(line));
-            } else if (startPoint != null) {
-                this.slopeText.setText("Please Select an EndPoint");
-            } else {
-                this.slopeText.setText("Please pick a start and end point");
-            }
+            ButtonHandlers.handleSlopeButtonClick(line, startPoint, endPoint, slopeText);
         });
         timeText = new Text("");
         timeText.setText("");
