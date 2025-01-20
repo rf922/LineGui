@@ -5,7 +5,6 @@
  */
 package GradientDescentModels;
 
-import LineGui.util.GradientDescentUtil;
 import LineGui.util.Point;
 import java.util.List;
 import javafx.scene.layout.Pane;
@@ -25,17 +24,17 @@ public class QuadraticModel extends LearningModel {
     private double quadB = Math.random() * 2 - 1;
     private double quadC = Math.random() * 2 - 1;
     
-    public QuadraticModel(GradientDescentUtil utils, Pane pane){
-        super(utils, pane);
+    public QuadraticModel(Pane pane){
+        super(pane);
     }
     
     @Override
     public void draw() {
         Polyline quadLine = new Polyline();
         for (int screenX = 0; screenX <= pane.getWidth(); screenX += 5) {
-            double x = util.toModelX(screenX);
+            double x = toModelX(screenX);
             double y = quadA * x * x + quadB * x + quadC;
-            quadLine.getPoints().addAll(util.toScreenX(x), util.toScreenY(y));
+            quadLine.getPoints().addAll(toScreenX(x), toScreenY(y));
         }
         quadLine.setStroke(Color.web(QUADRATIC_COLOR));
         quadLine.setStrokeWidth(3);
@@ -46,8 +45,8 @@ public class QuadraticModel extends LearningModel {
     public void update(List<Point> points) {
         double gradA = 0, gradBQuad = 0, gradC = 0;
         for (Point p : points) {
-            double x = util.toModelX(p.x);
-            double y = util.toModelY(p.y);
+            double x = toModelX(p.x);
+            double y = toModelY(p.y);
             double yPred = quadA * x * x + quadB * x + quadC;
             double error = yPred - y;
             gradA += 2 * error * x * x;

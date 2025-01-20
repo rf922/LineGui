@@ -5,7 +5,6 @@
  */
 package GradientDescentModels;
 
-import LineGui.util.GradientDescentUtil;
 import LineGui.util.Point;
 import java.util.List;
 import javafx.scene.layout.Pane;
@@ -23,17 +22,17 @@ public class LinearModel extends LearningModel {
     private double w = Math.random() * 2 - 1;
     private double b = Math.random() * 2 - 1;
     
-    public LinearModel(GradientDescentUtil utils, Pane pane){
-        super(utils, pane);
+    public LinearModel( Pane pane){
+        super(pane);
     }
 
     @Override
     public void draw() {
-        double leftX = util.toModelX(0);
-        double rightX = util.toModelX(pane.getWidth());
+        double leftX = toModelX(0);
+        double rightX = toModelX(pane.getWidth());
         double leftY = w * leftX + b;
         double rightY = w * rightX + b;
-        Line linearLine = new Line(util.toScreenX(leftX), util.toScreenY(leftY), util.toScreenX(rightX), util.toScreenY(rightY));
+        Line linearLine = new Line(toScreenX(leftX), toScreenY(leftY), toScreenX(rightX), toScreenY(rightY));
         linearLine.setStroke(Color.web(LINEAR_COLOR));
         linearLine.setStrokeWidth(3);
         pane.getChildren().add(linearLine);
@@ -44,8 +43,8 @@ public class LinearModel extends LearningModel {
         // Linear model update
         double gradW = 0, gradB = 0;
         for (Point p : points) {
-            double x = util.toModelX(p.x);
-            double y = util.toModelY(p.y);
+            double x = toModelX(p.x);
+            double y = toModelY(p.y);
             double yPred = w * x + b;
             double error = yPred - y;
             gradW += 2 * error * x;

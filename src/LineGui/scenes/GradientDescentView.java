@@ -8,7 +8,6 @@ import GradientDescentModels.CubicModel;
 import GradientDescentModels.LearningModel;
 import GradientDescentModels.LinearModel;
 import GradientDescentModels.QuadraticModel;
-import LineGui.util.GradientDescentUtil;
 import LineGui.util.Point;
 import javafx.animation.AnimationTimer;
 import javafx.scene.input.MouseEvent;
@@ -32,35 +31,15 @@ public class GradientDescentView {
     private final List<Point> points = new ArrayList<>(); // List of points added by the user
     private final String POINT_COLOR = "#c0c0c0";
     private final List<LearningModel> models;
-
-    // Linear model: y = w * x + b
-    private double w = Math.random() * 2 - 1;
-    private double b = Math.random() * 2 - 1;
-
-    // Quadratic model: y = a * x^2 + b * x + c
-    private double quadA = Math.random() * 2 - 1;
-    private double quadB = Math.random() * 2 - 1;
-    private double quadC = Math.random() * 2 - 1;
-
-    // Cubic model: y = a * x^3 + b * x^2 + c * x + d
-    private double cubicA = Math.random() * 2 - 1;
-    private double cubicB = Math.random() * 2 - 1;
-    private double cubicC = Math.random() * 2 - 1;
-    private double cubicD = Math.random() * 2 - 1;
-
-
-    
-    private GradientDescentUtil utils;
-    
+        
     
     public GradientDescentView() {
         this.pane = new Pane();
         this.pane.getStyleClass().add("pane"); // Set background color
-        this.utils = new GradientDescentUtil(pane);
         models = new ArrayList<>();
-        models.add(new LinearModel(utils, pane));
-        models.add(new QuadraticModel(utils, pane));
-        models.add(new CubicModel(utils, pane));        
+        models.add(new LinearModel(pane));
+        models.add(new QuadraticModel(pane));
+        models.add(new CubicModel(pane));        
     }
 
     public Pane build() {
