@@ -4,7 +4,10 @@
  */
 package LineGui.scenes;
 
-import LineGui.util.GradientDescentUtil;
+import GradientDescentModels.CubicModel;
+import GradientDescentModels.LearningModel;
+import GradientDescentModels.LinearModel;
+import GradientDescentModels.QuadraticModel;
 import LineGui.util.Point;
 import javafx.animation.AnimationTimer;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +20,11 @@ import javafx.scene.shape.Polyline;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 /**
  * A JavaFX view for visualizing gradient descent on linear, quadratic, and
@@ -27,35 +35,38 @@ public class GradientDescentView {
     private final Pane pane; // Pane to hold graphical elements
     private final List<Point> points = new ArrayList<>(); // List of points added by the user
     private final String POINT_COLOR = "#c0c0c0";
-
-    // Linear model: y = w * x + b
-    private double w = Math.random() * 2 - 1;
-    private double b = Math.random() * 2 - 1;
-
-    // Quadratic model: y = a * x^2 + b * x + c
-    private double quadA = Math.random() * 2 - 1;
-    private double quadB = Math.random() * 2 - 1;
-    private double quadC = Math.random() * 2 - 1;
-
-    // Cubic model: y = a * x^3 + b * x^2 + c * x + d
-    private double cubicA = Math.random() * 2 - 1;
-    private double cubicB = Math.random() * 2 - 1;
-    private double cubicC = Math.random() * 2 - 1;
-    private double cubicD = Math.random() * 2 - 1;
-
-
+    private final List<LearningModel> models;
     
-    private GradientDescentUtil utils;
     
+    private Button resetButton;
     
     public GradientDescentView() {
         this.pane = new Pane();
         this.pane.getStyleClass().add("pane"); // Set background color
-        this.utils = new GradientDescentUtil(pane);
+        models = new ArrayList<>();
+        models.add(new LinearModel(pane));
+        models.add(new QuadraticModel(pane));
+        models.add(new CubicModel(pane));        
     }
 
     public Pane build() {
+        BorderPane borderPane = new BorderPane();
+
         pane.setOnMouseClicked(this::handleMouseClicks); // Handle mouse clicks
+                
+        resetButton = new Button("Reset Points");
+        resetButton.setOnMouseClicked(e -> {
+            points.clear();
+            pane.getChildren().clear();
+        });
+        
+        TilePane buttonPane = new TilePane(resetButton);
+        
+        VBox controlBox = new VBox(buttonPane);
+        controlBox.getStyleClass().add("control-box");
+        controlBox.setAlignment(Pos.CENTER_LEFT);
+        
+        
 
         // Animation loop for rendering and updating models
         new AnimationTimer() {
@@ -65,8 +76,9 @@ public class GradientDescentView {
                 render();
             }
         }.start();
-
-        return pane;
+        borderPane.setCenter(pane);
+        borderPane.setBottom(controlBox);
+        return borderPane;
     }
 
     /**
@@ -76,24 +88,10 @@ public class GradientDescentView {
         if (points.isEmpty()) {
             return;
         }
-
-        // Linear model update
-        double[] updated = utils.updateLinearModel(points, w, b);
-        w = updated[0];
-        b = updated[1];
-
-        // Quadratic model update
-        updated = utils.updateQuadraticModel(points, quadA, quadB, quadC);
-        quadA = updated[0];
-        quadB = updated[1];
-        quadC = updated[2];
-
-        // Cubic model update
-        updated = utils.updateCubicModel(points, cubicA, cubicB, cubicC, cubicD);
-        cubicA = updated[0];
-        cubicB = updated[1];
-        cubicC = updated[2];
-        cubicD = updated[3];
+        
+        for(LearningModel m : models){
+            m.update(points);
+        }
     }
 
     /**
@@ -102,15 +100,10 @@ public class GradientDescentView {
     private void render() {
         // Clear previous model predictions
         pane.getChildren().removeIf(node -> node instanceof Line || node instanceof Polyline);
-
-        // Draw linear model prediction
-        utils.drawLinearModel(w, b);
-
-        // Draw quadratic model prediction
-        utils.drawQuadraticModel(quadA, quadB, quadC);
-
-        // Draw cubic model prediction
-        utils.drawCubicModel(cubicA, cubicB, cubicC, cubicD);
+        
+        for(LearningModel m : models){
+            m.draw();
+        }
     }
 
 

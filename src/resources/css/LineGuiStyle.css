@@ -3,41 +3,6 @@
 *    Author     : Rf922
 */
 
-.folder-icon{
-    -fx-graphic: url("/resources/images/icon.png");
-}
-
-.root{
-    -fx-background-image: url("/resources/images/space.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-position: center center;    
-}
-
-.button{
-    -fx-background-color:linear-gradient(#9c61b1, #b16192);   
-}
-
-.button:hover {
-    -fx-background-color: linear-gradient(#b16192, #61a2b1);
-}
-
-.pane {
-    -fx-font: 20px constantia;
-    -fx-stroke-width: 2;    
-}
-
-.control-box {
-    -fx-font: 10px constantia;
-    -fx-stroke: black;
-    -fx-background-color: linear-gradient(from 10% 0% to 100% 200%, repeat, magenta 10%, cyan 50%);
-    -fx-stroke-width: 2;
-}
-
-/** 
-*    Created on : Apr 13, 2020, 10:25:43 PM
-*    Author     : Rf922
-*/
-
 .folder-icon {
     -fx-graphic: url("/resources/images/icon.png");
 }
@@ -59,6 +24,7 @@
 .pane {
     -fx-font: 20px constantia;
     -fx-stroke-width: 2;    
+    -fx-padding: 10px;
 }
 
 .control-box {
@@ -66,6 +32,7 @@
     -fx-stroke: black;
     -fx-background-color: linear-gradient(from 10% 0% to 100% 200%, repeat, magenta 10%, cyan 50%);
     -fx-stroke-width: 2;
+    -fx-padding : 10px;
 }
 
 .tab-pane {

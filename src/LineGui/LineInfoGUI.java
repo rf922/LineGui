@@ -26,8 +26,8 @@ import javafx.scene.image.Image;
  */
 public class LineInfoGUI extends Application {
     
-    private static final int WINDOW_WIDTH = 600;
-    private static final int WINDOW_HEIGHT = 600;
+    private static final int WINDOW_WIDTH = 700;
+    private static final int WINDOW_HEIGHT = 700;
     private static final String WINDOW_TITLE = "Rf922's Line Gui";
 
         
@@ -59,6 +59,7 @@ public class LineInfoGUI extends Application {
         primaryStage.setTitle(WINDOW_TITLE);
         primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/resources/images/icon.png")));
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
