@@ -1,0 +1,22 @@
+/** 
+*    Created on : Apr 13, 2020, 10:25:43 PM
+*    Author     : Rf922
+*/
+
+.folder-icon{
+    -fx-graphic: url("icon.png");
+}
+
+.root{
+    -fx-background-image: url("space.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;    
+}
+
+.button{
+    -fx-background-color:linear-gradient(#9c61b1, #b16192);   
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#b16192, #61a2b1);
+}
